@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="./style.css">
+    <title>Vue-Practice</title>
+  </head>
+  <body>
+    <div id="app">
+      <h2>section1</h2>
+      <p>{{title}}</p>
+      <h2>section2</h2>
+      <input v-model="message" type="text" />
+      <p>{{message}}</p>
+      
+      <h2>sections3</h2>
+      <ul>
+        <li v-for="list in lists">{{list.content}}</li>
+      </ul>
+
+      <p v-if="lists.length > 5">List is too many!</p>
+      <!-- <p v-else-if="lists.length > 3">List is more than 3</p> -->
+      <p v-else>List length is {{lists.length}}</p>
+
+      <input type="checkbox" v-model="isActive" />
+      <span>{{isActive}}</span>
+      <span>{{!isActive}}</span>
+      <h2>section4</h2>
+      <input 
+        type="button"
+        value="+1"
+        v-on:click="countUp()"
+      />
+      <p>{{counts}}</p>
+
+      <h2>section5</h2>
+      <input 
+        type="button"
+        class="btn-toggle"
+        value="Styled Button"
+        v-on:click="toggle()"
+        v-bind:class="{'is-active': toggleFlag}"
+      />
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="./index.js"></script>
+</html>
