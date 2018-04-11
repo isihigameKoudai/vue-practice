@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>TodoList</title>
+	<script src="https://unpkg.com/vue"></script>
+	<style>
+		html,body{
+			font-size: 15px;
+		}
+		.center{
+			text-align: center;
+		}
+		*{
+			list-style: none;
+			box-sizing:border-box;
+			margin: 0;
+		}
+		ul{
+			padding: 0;
+		}
+		li{
+			line-height: 2.5;
+		}
+		.inputs *{
+			font-size: 1.2rem;
+			padding:1rem;
+			border-radius: 3px;
+			border:none;
+			box-shadow: none;
+		}
+		button{
+			border-radius: 3px;
+			border:none;
+			box-shadow: #333 1px 1px 2px;
+		}
+		.listWrap{
+			width: 100%;
+			display: -webkit-flex;
+			display: -ms-flex;
+			display: flex;
+			flex-wrap:wrap;
+			min-height:72vh;
+		}
+		.listWrap__single{
+			width: 50%;
+			padding:2rem;
+		}
+		.listWrap__single + .listWrap__single{
+			border-left:1px dotted #eee;
+		}
+		.listWrap__single--dones{
+			background: #fcfcfc;
+		}
+		.subtit{
+			font-size: 1.2rem;
+			font-weight: bold;
+			color: #000;
+			margin-bottom: 1em;
+			line-height: 1;
+		}
+		.header{
+			background: #f6f6f6;
+			padding:2rem 0;
+			height: 28vh;
+		}
+		h1{
+			margin-bottom: 1rem;
+		}
+		.fade01-enter-active,
+		.fade01-leave-active {
+	  	transition: opacity .2s
+		}
+		.fade01-enter, .fade01-leave-to /* .fade-leave-active below version 2.1.8 */ {
+	  	opacity: 0
+		}
+		.btns{
+			display: inline-block;
+			margin-left: 1rem;
+		}
+		.btns button{
+			display: inline-block;
+			margin:0 0.25em;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<header class="header">
+			<h1 class="center">TodoList</h1>
+			<div class="center inputs">
+				<input type="text" placeholder="Todo" v-model="add">
+				<button @click="addTodo">ADD</button>
+			</div>
+		</header>
+
+		<transition name="fade01">
+			<template v-if="todos[0]">
+				<div class="listWrap">
+					<div class="listWrap__single listWrap__single--todos">
+						<div class="subtit">TODO</div>
+						<ul class="todoList">
+							<li class="todoList__single" v-for="(todo,index) in todos" :key="todo.name" v-if="!todo.isDone">
+									{{ todo.name }}
+								<span class="btns">
+									<button @click="doneTodo(index)">DONE!</button>
+									<button @click="removeTodo(index)">DELETE</button>
+								</span>
+							</li>
+						</ul>
+					</div>
+
+					<div class="listWrap__single listWrap__single--dones">
+						<div class="subtit">DONE!</div>
+						<ul class="todoList">
+							<li class="todoList__single" v-for="(todo,index) in todos" v-if="todo.isDone">
+								{{ todo.name }}
+								<span class="btns">
+									<button @click="backTodo(index)">BACK</button>
+									<button @click="removeTodo(index)">DELETE</button>
+								</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</template>
+		</transition>
+	</div>
+
+
+<script>
+	const app = new Vue({
+		el:"#app",
+		data:{
+			add:"",
+			todos:[
+			]
+		},
+		methods:{
+			addTodo:function(){
+				if(this.add){
+					this.todos.push({name:this.add,isDone:false});
+					this.add = "";
+				}
+			},
+			doneTodo:function(index){
+				this.todos[index].isDone = true;
+			},
+			backTodo:function(index){
+				this.todos[index].isDone = false;
+			},
+			removeTodo:function(index){
+				this.todos.splice(index,1);
+			}
+		}
+	});
+</script>
+
+</body>
+</html>

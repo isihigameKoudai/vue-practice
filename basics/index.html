@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">     
+    <meta http-equiv="Content-Type" content="text/html"/>
     <link rel="stylesheet" href="./style.css">
     <title>Vue-Practice</title>
   </head>
   <body>
     <div id="app">
-      <h2>section1</h2>
+      <h2>section1 - Instance,el,data -</h2>
       <p>{{title}}</p>
-      <h2>section2</h2>
+      <h2>section2 - v-model -</h2>
       <input v-model="message" type="text" />
       <p>{{message}}</p>
       
-      <h2>sections3</h2>
+      <h2>sections3 - v-for,v-if -</h2>
       <ul>
         <li v-for="list in lists">{{list.content}}</li>
       </ul>
@@ -25,7 +27,7 @@
       <input type="checkbox" v-model="isActive" />
       <span>{{isActive}}</span>
       <span>{{!isActive}}</span>
-      <h2>section4</h2>
+      <h2>section4 - method -</h2>
       <input 
         type="button"
         value="+1"
@@ -33,7 +35,7 @@
       />
       <p>{{counts}}</p>
 
-      <h2>section5</h2>
+      <h2>section5 - v-on,v-bind-</h2>
       <input 
         type="button"
         class="btn-toggle"
