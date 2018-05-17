@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">     
+    <meta http-equiv="Content-Type" content="text/html"/>
+    <style>
+      .count_label {
+        font-size: 24px;
+        font-weight: bold;
+        color: #222;
+      }
+      .count_label.is-over {
+        color: #ff0000;
+      }
+
+    </style>
+    <title>Vue-Practice</title>
+  </head>
+  <body>
+    <div id="app">
+        <input 
+        type="button"
+        value="+1"
+        @click="countUp()"
+      />
+      <p 
+        class="count_label"
+        :class="{'is-over':count > 10}"
+      >{{count}}</p>
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: "#app",
+      data() {
+        return {
+          message: 'Hello World',
+          flag: false,
+          count: 0,
+          lists: [
+            {id:1, text:'ラーメン食べたい'},
+            {id:2, text:'油そば食べたい'},
+            {id:3, text:'牛タン食べたい'},
+            {id:4, text:'フカヒレ食べたい'},
+            {id:5, text:'チョコ食べたい'}
+          ]
+        }
+      },
+      methods: {
+        countUp() {
+          this.count += 1;
+        }
+      }
+    });
+  </script>
+</html>

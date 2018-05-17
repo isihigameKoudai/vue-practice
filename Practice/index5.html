@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">     
+    <meta http-equiv="Content-Type" content="text/html"/>
+    <style>
+
+    </style>
+    <title>Vue-Practice</title>
+  </head>
+  <body>
+    <div id="app">
+      <input 
+        type="button"
+        value="+1"
+        @click="countUp()"
+      />
+      <p>{{count}}</p>
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: "#app",
+      data() {
+        return {
+          message: '',
+          count: 0
+        }
+      },
+      methods: {
+        countUp() {
+          this.count += 1;
+        }
+      }
+    });
+  </script>
+</html>

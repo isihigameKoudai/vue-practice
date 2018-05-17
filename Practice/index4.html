@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">     
+    <meta http-equiv="Content-Type" content="text/html"/>
+    <style>
+
+    </style>
+    <title>Vue-Practice</title>
+  </head>
+  <body>
+    <div id="app">
+      <ul>
+        <li v-for="list in lists">{{list.text}}</li>
+      </ul>
+      <h2 v-if="lists.length > 5">食べたすぎ</h2>
+      <h2 v-else-if="lists.length > 3">満腹</h2>
+      <h2 v-else>お腹すいた</h2>
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: "#app",
+      data() {
+        return {
+          message: 'Hello World',
+          flag: false,
+          lists: [
+            {id:1, text:'ラーメン食べたい'},
+            {id:2, text:'油そば食べたい'},
+            {id:3, text:'牛タン食べたい'},
+            {id:4, text:'フカヒレ食べたい'},
+            {id:5, text:'チョコ食べたい'}
+          ]
+        }
+      },
+
+    });
+  </script>
+</html>

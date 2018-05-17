@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">     
+    <meta http-equiv="Content-Type" content="text/html"/>
+    <link rel="stylesheet" href="./style.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Vue sample</title>
+  </head>
+  <body>
+    <div id="app">
+      <input v-model="message" type="text" />
+      <input 
+        type="button" 
+        type="button" 
+        v-on:click="tapButton()" 
+        value="PUSH"
+      />
+      <p>{{message}}</p>
+      
+      <h1 v-if="num >= 10">１０以上</h1>
+      <h2 v-else-if="num >= 5">５以上</h2>
+      <h3 v-else>４未満</h3>
+      <ul>
+        <li v-for="todo in todos">
+          <p>{{todo.id}} {{todo.text}}</p>
+        </li>
+      </ul>
+      <input 
+        type="button" 
+        value="BUTTON"
+        class="btn-toggle"
+        @click="tapButton()"
+        :class="{'is-active': toggleFlag}"
+      />
+    </div>
+  </body>
+  <script>
+  var app = new Vue({
+    el: "#app",
+    data() {
+      return {
+        message: "Hellow Vue.js",
+        num: 10,
+        toggleFlag: false,
+        todos: [
+          {id:1, text:"油そばを食べる"},
+          {id:2, text:"家の掃除をする"},
+          {id:3, text:"食料を買って帰る"}
+        ]
+      }
+    },
+    methods: {
+      tapButton() {
+        this.toggleFlag = !this.toggleFlag;
+      }
+    }
+  });
+  </script>
+</html>

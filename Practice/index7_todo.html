@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">     
+    <meta http-equiv="Content-Type" content="text/html"/>
+    <style>
+      .count_label {
+        font-size: 24px;
+        font-weight: bold;
+        color: #222;
+      }
+      .count_label.is-over {
+        color: #ff0000;
+      }
+
+    </style>
+    <title>Vue-Practice</title>
+  </head>
+  <body>
+    <div id="app">
+     <input 
+      type="text" 
+      v-model="message"
+    />
+      <input 
+        type="button" 
+        value="ADD" 
+        @click="addTodo()"
+      />
+      <ul>
+        <li v-for="list in lists">{{list}}</li>
+      </ul>
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: "#app",
+      data() {
+        return {
+          message: '',
+          lists: []
+        }
+      },
+      methods: {
+        addTodo() {
+          this.lists.push(this.message);
+          this.message = "";
+        }
+      }
+    });
+  </script>
+</html>
